@@ -1,0 +1,174 @@
+/* Contenedor principal */
+.pantalla-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Contenedor del chat */
+.chat-container {
+    display: flex;
+    height: 100%;
+}
+
+.full-width .chat-box {
+    width: 100%;
+}
+
+/* Historial del chat (lado izquierdo) */
+.historial-box {
+    width: 25%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    padding: 1rem;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+    .historial-box.slide-out {
+        width: 0;
+        padding: 0;
+        border-right: none;
+    }
+
+/* Botón de mostrar/ocultar historial */
+.toggle-icon {
+    font-size: 1.5rem;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .toggle-icon:hover {
+        color: #0056b3;
+    }
+
+.open-icon {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}
+
+/* Contenedor del chat */
+.chat-box {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    transition: width 0.3s ease;
+}
+
+/* Contenedor del usuario y el menú desplegable */
+.user-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-icon {
+    font-size: 2rem;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .user-icon:hover {
+        color: #0056b3;
+    }
+
+.user-menu {
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    animation: slideDown 0.3s ease;
+    z-index: 10;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .menu-item:hover {
+        background-color: #f0f0f0;
+    }
+
+.menu-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Estilo de la sección del plan */
+.plan-info {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+.plan-details {
+    margin-left: 0.5rem;
+}
+
+    .plan-details p {
+        margin: 0.2rem 0;
+    }
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Formulario de preguntas */
+.preguntas-form {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.pregunta-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-right: 1rem;
+    resize: none;
+}
+
+.enviar-button {
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+    .enviar-button:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }

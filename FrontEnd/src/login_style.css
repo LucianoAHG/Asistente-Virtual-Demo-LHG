@@ -1,0 +1,158 @@
+
+.unique-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.unique-login-box {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+    .unique-login-box:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+    }
+
+.unique-login-titulo {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #007bff;
+    text-align: center;
+}
+
+.unique-login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.unique-login-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.unique-input-icon {
+    position: absolute;
+    left: 10px;
+    color: #999;
+    font-size: 1.2rem;
+}
+
+.unique-login-label {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #333;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+        background-color: #fff;
+    }
+
+input:focus + .unique-login-label,
+input:not(:placeholder-shown) + .unique-login-label {
+    top: -10px;
+    font-size: 0.85rem;
+    color: #007bff;
+}
+
+.unique-login-button {
+    padding: 0.75rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+    .unique-login-button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    .unique-login-button:active {
+        transform: scale(1);
+    }
+
+.unique-register-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+    .unique-register-link a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+        .unique-register-link a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+.social-login {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    color: #007bff;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+    .social-icons i:hover {
+        transform: scale(1.2);
+        color: #0056b3;
+    }
