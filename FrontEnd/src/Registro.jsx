@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './registro_style.css';
+import '/src/css/registro_style.css';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 
 const Register = () => {

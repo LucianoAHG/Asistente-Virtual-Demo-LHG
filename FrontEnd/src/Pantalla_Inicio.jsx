@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './preguntas_style.css';
+import '/src/css/preguntas_style.css';
 import { FaPaperPlane, FaChevronLeft, FaChevronRight, FaCog, FaSignOutAlt, FaRegUserCircle, FaUserTag } from 'react-icons/fa';
 
 const PantallaInicio = () => {
@@ -48,6 +48,12 @@ const PantallaInicio = () => {
         setMenuVisible(false);
     };
 
+    const handleConfiguracion = () => {
+        closeMenu();
+        // Redirigir a la vista de configuración del usuario
+        navigate('/Configuracion_Usuario');
+    };
+
     const handleCerrarSesion = () => {
         // Eliminar el token de localStorage
         localStorage.removeItem('token');
@@ -82,9 +88,9 @@ const PantallaInicio = () => {
                         <FaRegUserCircle className="user-icon" onClick={toggleMenu} />
                         {menuVisible && (
                             <div className="user-menu" onMouseLeave={closeMenu}>
-                                <div className="menu-item" onClick={() => console.log('Configuraciones')}>
+                                <div className="menu-item" onClick={handleConfiguracion}>
                                     <FaCog className="menu-icon" />
-                                    <span>Configuraciones</span>
+                                    <span>Configuración</span>
                                 </div>
                                 <div className="menu-item" onClick={handleCerrarSesion}>
                                     <FaSignOutAlt className="menu-icon" />
