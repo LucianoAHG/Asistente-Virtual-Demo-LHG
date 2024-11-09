@@ -112,19 +112,31 @@
 
 /* Estilo de la sección del plan */
 .plan-info {
-    display: flex;
-    align-items: center;
     padding: 0.75rem 1rem;
 }
 
 .plan-details {
-    margin-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-    .plan-details p {
-        margin: 0.2rem 0;
-    }
+.plan-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+.plan-label {
+    font-weight: bold;
+    margin-right: 5px; /* Espaciado entre el label y el detalle */
+}
+
+.plan-detail {
+    margin-left: auto; /* Alinear el contenido después de los dos puntos */
+}
+
+/* Animación para desplegar el menú */
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -142,6 +154,8 @@
     display: flex;
     align-items: center;
     margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .pregunta-input {
@@ -152,23 +166,117 @@
     font-size: 1rem;
     margin-right: 1rem;
     resize: none;
+    box-sizing: border-box;
 }
 
+/* Tamaño del botón enviar */
 .enviar-button {
-    padding: 0.75rem;
+    padding: 0.5rem;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Tamaño del icono */
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 45px; /* Ajustar el tamaño del botón */
+    height: 45px; /* Ajustar el tamaño del botón */
     transition: background-color 0.3s, transform 0.3s;
 }
 
     .enviar-button:hover {
         background-color: #0056b3;
         transform: scale(1.1);
+    }
+
+/* Estilo para el toggle de modo oscuro */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+    input:checked + .slider:before {
+        transform: translateX(20px);
+    }
+
+/* Modo oscuro */
+.dark-mode {
+    background-color: #181818;
+    color: #f0f0f0;
+}
+
+    .dark-mode .chat-box {
+        background-color: #2e2e2e;
+        color: #f0f0f0;
+    }
+
+    .dark-mode .pregunta-input {
+        background-color: #444;
+        color: #fff;
+        border-color: #555;
+    }
+
+    .dark-mode .historial-box {
+        background-color: #2e2e2e;
+    }
+
+    .dark-mode .user-menu {
+        background-color: #2e2e2e;
+    }
+
+/* Estilos globales para aplicar el modo oscuro a toda la página */
+body.dark-mode, .dark-mode {
+    background-color: #181818;
+    color: #f0f0f0;
+}
+
+    /* Otros elementos del modo oscuro */
+    .dark-mode .toggle-icon, .dark-mode .menu-item, .dark-mode .plan-details {
+        color: #f0f0f0;
     }

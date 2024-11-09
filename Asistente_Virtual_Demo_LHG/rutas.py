@@ -1,6 +1,7 @@
 ﻿from flask import Blueprint
 from auth import registrar_usuario, login_usuario
 from protegido import pantalla_inicio, gestionar_usuario, cambiar_contrasena, actualizar_preferencias, eliminar_cuenta
+from protegido import obtener_usuarios, gestionar_roles_permisos
 from auth import get_google_auth_url, google_callback
 
 # Crear blueprints para agrupar rutas
@@ -19,3 +20,7 @@ protected_blueprint.add_url_rule('/api/usuario', 'gestionar_usuario', gestionar_
 protected_blueprint.add_url_rule('/api/cambiar-contrasena', 'cambiar_contrasena', cambiar_contrasena, methods=['POST'])
 protected_blueprint.add_url_rule('/api/preferencias', 'actualizar_preferencias', actualizar_preferencias, methods=['PUT'])
 protected_blueprint.add_url_rule('/api/eliminar-cuenta', 'eliminar_cuenta', eliminar_cuenta, methods=['DELETE'])
+
+# Rutas para la gestión de roles y usuarios
+protected_blueprint.add_url_rule('/api/usuarios', 'obtener_usuarios', obtener_usuarios, methods=['GET'])
+protected_blueprint.add_url_rule('/api/usuarios/<int:id_usuario>/actualizarRol', 'gestionar_roles_permisos', gestionar_roles_permisos, methods=['POST', 'GET'])
