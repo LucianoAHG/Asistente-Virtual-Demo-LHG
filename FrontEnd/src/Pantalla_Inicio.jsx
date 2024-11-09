@@ -1,21 +1,54 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '/src/css/preguntas_style.css';
-import { FaPaperPlane, FaChevronLeft, FaChevronRight, FaCog, FaSignOutAlt, FaRegUserCircle, FaUserTag } from 'react-icons/fa';
+import { FaPaperPlane, FaChevronLeft, FaChevronRight, FaCog, FaSignOutAlt, FaRegUserCircle, FaUserTag, FaMoon } from 'react-icons/fa';
 
 const PantallaInicio = () => {
     const [pregunta, setPregunta] = useState('');
     const [historial, setHistorial] = useState([]);
     const [historialVisible, setHistorialVisible] = useState(true);
     const [menuVisible, setMenuVisible] = useState(false);
-    const navigate = useNavigate();  // Hook para redirigir
+    const [nombre, setNombre] = useState('');
+    const [temaOscuro, setTemaOscuro] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Verificar si el token está en localStorage al cargar la página
         const token = localStorage.getItem('token');
+        const temaGuardado = localStorage.getItem('temaOscuro');
+
+        // Verificar si el token está en localStorage al cargar la página
         if (!token) {
-            // Si no hay token, redirigir al inicio de sesión
             navigate('/Inicio');
+        } else {
+            // Petición para obtener los datos del usuario
+            fetch('http://localhost:5000/api/usuario', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.error) {
+                        console.error("Error al obtener los datos del usuario:", data.error);
+                        navigate('/Inicio');
+                    } else {
+                        setNombre(data.nombre);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error al obtener los datos del usuario:", error);
+                    navigate('/Inicio');
+                });
+        }
+
+        // Aplicar el tema oscuro si está guardado en localStorage
+        if (temaGuardado === 'true') {
+            setTemaOscuro(true);
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
         }
     }, [navigate]);
 
@@ -48,19 +81,21 @@ const PantallaInicio = () => {
         setMenuVisible(false);
     };
 
-    const handleConfiguracion = () => {
-        closeMenu();
-        // Redirigir a la vista de configuración del usuario
-        navigate('/Configuracion_Usuario');
-    };
-
     const handleCerrarSesion = () => {
-        // Eliminar el token de localStorage
         localStorage.removeItem('token');
         console.log("Cerrando sesión...");
-
-        // Redirige a la vista de inicio de sesión
         navigate('/Inicio');
+    };
+
+    const toggleTemaOscuro = () => {
+        const nuevoTemaOscuro = !temaOscuro;
+        setTemaOscuro(nuevoTemaOscuro);
+        localStorage.setItem('temaOscuro', nuevoTemaOscuro);
+        if (nuevoTemaOscuro) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
     };
 
     return (
@@ -88,20 +123,34 @@ const PantallaInicio = () => {
                         <FaRegUserCircle className="user-icon" onClick={toggleMenu} />
                         {menuVisible && (
                             <div className="user-menu" onMouseLeave={closeMenu}>
-                                <div className="menu-item" onClick={handleConfiguracion}>
+                                <div className="menu-item" onClick={() => navigate('/configuracion_Usuario')}>
                                     <FaCog className="menu-icon" />
-                                    <span>Configuración</span>
+                                    <span>Configuraciones</span>
+                                </div>
+                                 <div className="menu-item plan-info">
+                                    <FaUserTag className="menu-icon" />
+                                    <div className="plan-details">
+                                        <div className="plan-row">
+                                            <span className="plan-label"><strong>Nombre:</strong></span>
+                                            <span>{nombre}</span>
+                                        </div>
+                                        <div className="plan-row">
+                                            <span className="plan-label"><strong>Plan actual:</strong></span>
+                                            <span>Premium</span>
+                                        </div>
+                                        <div className="plan-row">
+                                            <span className="plan-label"><strong>Renovación:</strong></span>
+                                            <span>12/12/2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="menu-item" onClick={toggleTemaOscuro}>
+                                    <FaMoon className="menu-icon" />
+                                    <span>Tema Oscuro</span>
                                 </div>
                                 <div className="menu-item" onClick={handleCerrarSesion}>
                                     <FaSignOutAlt className="menu-icon" />
                                     <span>Cerrar Sesión</span>
-                                </div>
-                                <div className="menu-item plan-info">
-                                    <FaUserTag className="menu-icon" />
-                                    <div className="plan-details">
-                                        <p><strong>Plan actual:</strong> Premium</p>
-                                        <p><strong>Renovación:</strong> 12/12/2024</p>
-                                    </div>
                                 </div>
                             </div>
                         )}

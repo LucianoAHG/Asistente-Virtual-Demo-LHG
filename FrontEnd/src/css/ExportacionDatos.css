@@ -1,0 +1,36 @@
+.exportacion-datos-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.filtros-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+    .filtros-container label {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
+
+.export-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+    .export-button:hover {
+        background-color: #0056b3;
+    }
+
+    .export-button svg {
+        margin-right: 5px;
+    }

@@ -136,7 +136,7 @@ def google_callback():
     google_email = id_info.get("email")
     google_name = id_info.get("name")
 
-    # Puedes guardar al usuario en tu base de datos aquí si es necesario
+    #guardar al usuario en tu base de datos
 
     # Redirigir al frontend o dashboard después de la autenticación exitosa
-    return redirect('http://localhost:5174/pantalla_inicio')
+    return redirect('http://localhost:5173/Inicio')

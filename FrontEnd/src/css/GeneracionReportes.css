@@ -1,0 +1,85 @@
+.generacion-reportes-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.filtros-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+    .filtros-container label {
+        display: flex;
+        flex-direction: column;
+        margin-right: 15px;
+    }
+
+.generar-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .generar-button:hover {
+        background-color: #0056b3;
+    }
+
+.reportes-container {
+    margin-top: 20px;
+}
+
+.reportes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    background-color: #f9f9f9; /* Fondo ajustado */
+}
+
+    .reportes-table th, .reportes-table td {
+        border: 1px solid #e0e0e0; /* Línea de separación más sutil */
+        padding: 10px;
+        text-align: left;
+    }
+
+    .reportes-table th {
+        background-color: #e5e5e5; /* Fondo del encabezado ajustado para diferenciarlo */
+        color: #333; /* Color del texto del encabezado para mejor visibilidad */
+        font-weight: bold;
+    }
+
+    .reportes-table td {
+        background-color: #ffffff; /* Fondo de las celdas */
+        color: #555; /* Color del texto de las celdas */
+    }
+
+    .reportes-table tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alterna el fondo de las filas para mejor visibilidad */
+    }
+
+.export-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+    .export-buttons button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+        .export-buttons button:hover {
+            background-color: #218838;
+        }
+
+        .export-buttons button svg {
+            margin-right: 5px;
+        }

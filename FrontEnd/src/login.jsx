@@ -25,11 +25,16 @@ const App = () => {
             const data = await response.json();
 
             if (response.ok) {
-                // Almacenar el token en localStorage para mantener la sesión
+                // Almacenar el token y rol en localStorage para mantener la sesión
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('rol', data.rol);  // Guardar el rol
 
-                // Redirigir al usuario a la pantalla de inicio
-                navigate('/pantalla_inicio');
+                // Redirigir al usuario basado en su rol
+                if (data.rol === 'Administrador') {
+                    navigate('/admin_dashboard');  // Redirigir al dashboard de administración
+                } else {
+                    navigate('/pantalla_inicio');  // Redirigir a la pantalla de inicio estándar
+                }
             } else {
                 // Si ocurre un error, mostrar el mensaje correspondiente
                 setError(data.error || 'Ocurrió un error. Inténtalo nuevamente.');
